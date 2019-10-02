@@ -7,11 +7,13 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 
+import com.lydia.dicoding.moviecatalogue4.db.DatabaseContract;
 import com.lydia.dicoding.moviecatalogue4.db.MovieHelper;
 
 import static com.lydia.dicoding.moviecatalogue4.db.DatabaseContract.AUTHORITY;
 import static com.lydia.dicoding.moviecatalogue4.db.DatabaseContract.MovieColumns.CONTENT_URI;
 import static com.lydia.dicoding.moviecatalogue4.db.DatabaseContract.MovieColumns.TABLE_NAME;
+import static com.lydia.dicoding.moviecatalogue4.db.DatabaseContract.TvshowColumns.TABLE_NAME_TV;
 
 public class MovieProvider  extends ContentProvider {
 
@@ -30,10 +32,10 @@ public class MovieProvider  extends ContentProvider {
                 TABLE_NAME + "/#",
                 MOVIE_ID);
 
-        sUriMatcher.addURI(AUTHORITY, TABLE_NAME, TVSHOW);
+        sUriMatcher.addURI(AUTHORITY, TABLE_NAME_TV, TVSHOW);
 
         sUriMatcher.addURI(AUTHORITY,
-                TABLE_NAME + "/#",
+                TABLE_NAME_TV + "/#",
                 TVSHOW_ID);
     }
 

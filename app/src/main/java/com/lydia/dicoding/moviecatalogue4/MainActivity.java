@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
     };
 
     private void showNowPlaying() {
-        getSupportActionBar().setTitle(R.string.now_playing);
+        getSupportActionBar().setTitle(R.string.movie);
 
         FragmentManager mFragmentManager = getSupportFragmentManager();
         FragmentTransaction mFragmentTransaction = mFragmentManager.beginTransaction();

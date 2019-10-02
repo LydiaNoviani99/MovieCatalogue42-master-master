@@ -101,19 +101,19 @@ public class DetailActivity extends AppCompatActivity {
         }
 
         if(tvshow != null){
-            Cursor cursor1 = getContentResolver().query(Uri.parse(DatabaseContract.TvshowColumns.CONTENT_URI + "/" + tvshow.getId()), null, null, null, null);
+            Cursor cursor1 = getContentResolver().query(Uri.parse(DatabaseContract.TvshowColumns.CONTENT_URI_TV + "/" + tvshow.getId()), null, null, null, null);
             if (cursor1.getCount() == 0) {
                 ContentValues contentValues = new ContentValues();
                 contentValues.put(_ID, tvshow.getId());
                 contentValues.put(TITLE, tvshow.getTitle());
                 contentValues.put(OVERVIEW, tvshow.getOverview());
                 contentValues.put(POSTER_PATH, tvshow.getPosterPath());
-                getContentResolver().insert(DatabaseContract.TvshowColumns.CONTENT_URI, contentValues);
+                getContentResolver().insert(DatabaseContract.TvshowColumns.CONTENT_URI_TV, contentValues);
                 Toast.makeText(DetailActivity.this, tvshow.getTitle() + " save to favorite tv shows", Toast.LENGTH_LONG).show();
             } else {
-                long deleted = getContentResolver().delete(Uri.parse(DatabaseContract.TvshowColumns.CONTENT_URI + "/" + tvshow.getId()), null, null);
+                long deleted = getContentResolver().delete(Uri.parse(DatabaseContract.TvshowColumns.CONTENT_URI_TV + "/" + tvshow.getId()), null, null);
                 if (deleted > 0) {
-                    getContentResolver().notifyChange(DatabaseContract.TvshowColumns.CONTENT_URI, null);
+                    getContentResolver().notifyChange(DatabaseContract.TvshowColumns.CONTENT_URI_TV, null);
                 }
                 Toast.makeText(DetailActivity.this, tvshow.getTitle() + " remove from favorite tv shows", Toast.LENGTH_LONG).show();
             }

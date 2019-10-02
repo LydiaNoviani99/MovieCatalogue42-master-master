@@ -27,7 +27,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 import static android.provider.BaseColumns._ID;
-import static com.lydia.dicoding.moviecatalogue4.db.DatabaseContract.TvshowColumns.CONTENT_URI;
+import static com.lydia.dicoding.moviecatalogue4.db.DatabaseContract.TvshowColumns.CONTENT_URI_TV;
 import static com.lydia.dicoding.moviecatalogue4.db.DatabaseContract.TvshowColumns.OVERVIEW;
 import static com.lydia.dicoding.moviecatalogue4.db.DatabaseContract.TvshowColumns.POSTER_PATH;
 import static com.lydia.dicoding.moviecatalogue4.db.DatabaseContract.TvshowColumns.TITLE;
@@ -87,7 +87,7 @@ public class FavouriteTvFragment extends Fragment implements TvShowAdapter.TvSho
         @Override
         protected Cursor doInBackground(Void... voids) {
             return getActivity().getContentResolver().query(
-                    CONTENT_URI,
+                    CONTENT_URI_TV,
                     null,
                     null,
                     null,

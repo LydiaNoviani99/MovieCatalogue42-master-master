@@ -7,4 +7,8 @@
     <string name="search_movie">Pencarian Film</string>
     <string name="movie_name">Judul Film</string>
     <string name="favorite">Favorit</string>
+    <string name="favorite_movie">Film Favoritku</string>
+    <string name="favorite_tv">Acara Tv Favoritku</string>
+    <string name="movie">Film</string>
+    <string name="tv_show">Acara TV</string>
 </resources>
