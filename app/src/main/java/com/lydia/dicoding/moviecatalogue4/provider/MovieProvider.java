@@ -57,10 +57,10 @@ public class MovieProvider  extends ContentProvider {
                 cursor = movieHelper.queryByIdProvider(uri.getLastPathSegment());
                 break;
             case TVSHOW:
-                cursor = movieHelper.queryProvider();
+                cursor = movieHelper.queryProviderTv();
                 break;
             case TVSHOW_ID:
-                cursor = movieHelper.queryByIdProvider(uri.getLastPathSegment());
+                cursor = movieHelper.queryByIdProviderTv(uri.getLastPathSegment());
                 break;
             default:
                 cursor = null;
@@ -86,7 +86,7 @@ public class MovieProvider  extends ContentProvider {
                 added = movieHelper.insertProvider(contentValues);
                 break;
             case TVSHOW:
-                added = movieHelper.insertProvider(contentValues);
+                added = movieHelper.insertProviderTv(contentValues);
                 break;
             default:
                 added = 0;
@@ -107,7 +107,7 @@ public class MovieProvider  extends ContentProvider {
                 updated = movieHelper.updateProvider(uri.getLastPathSegment(), contentValues);
                 break;
             case TVSHOW_ID:
-                updated = movieHelper.updateProvider(uri.getLastPathSegment(), contentValues);
+                updated = movieHelper.updateProviderTv(uri.getLastPathSegment(), contentValues);
                 break;
             default:
                 updated = 0;
@@ -128,7 +128,7 @@ public class MovieProvider  extends ContentProvider {
                 deleted = movieHelper.deleteProvider(uri.getLastPathSegment());
                 break;
             case TVSHOW_ID:
-                deleted = movieHelper.deleteProvider(uri.getLastPathSegment());
+                deleted = movieHelper.deleteProviderTv(uri.getLastPathSegment());
                 break;
             default:
                 deleted = 0;

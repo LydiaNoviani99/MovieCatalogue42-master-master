@@ -32,7 +32,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     " %s TEXT NOT NULL," +
                     " %s TEXT NOT NULL," +
                     " %s TEXT NOT NULL)",
-            DatabaseContract.TvshowColumns.TABLE_NAME,
+            DatabaseContract.TvshowColumns.TABLE_NAME_TV,
             DatabaseContract.TvshowColumns._ID,
             DatabaseContract.TvshowColumns.TITLE,
             DatabaseContract.TvshowColumns.OVERVIEW,
@@ -47,13 +47,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
 
         db.execSQL(SQL_CREATE_TABLE_MOVIE);
-//        db.execSQL(SQL_CREATE_TABLE_TVSHOW);
+        db.execSQL(SQL_CREATE_TABLE_TVSHOW);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + DatabaseContract.MovieColumns.TABLE_NAME);
-//        db.execSQL("DROP TABLE IF EXISTS " + DatabaseContract.TvshowColumns.TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + DatabaseContract.TvshowColumns.TABLE_NAME_TV);
         onCreate(db);
     }
 

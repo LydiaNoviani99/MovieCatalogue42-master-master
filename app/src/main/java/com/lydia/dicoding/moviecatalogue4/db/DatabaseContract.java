@@ -28,14 +28,14 @@ public class DatabaseContract {
 
     public static final class TvshowColumns implements BaseColumns {
 
-        public static String TABLE_NAME = "TVSHOW";
+        public static String TABLE_NAME_TV = "TVSHOW";
         public static String TITLE = "title";
         public static String OVERVIEW = "overview";
         public static String POSTER_PATH = "poster_path";
 
         public static final Uri CONTENT_URI = new Uri.Builder().scheme(SCHEME)
                 .authority(AUTHORITY)
-                .appendPath(TABLE_NAME)
+                .appendPath(TABLE_NAME_TV)
                 .build();
     }
 

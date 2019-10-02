@@ -18,10 +18,12 @@ import static com.lydia.dicoding.moviecatalogue4.db.DatabaseContract.MovieColumn
 import static com.lydia.dicoding.moviecatalogue4.db.DatabaseContract.MovieColumns.POSTER_PATH;
 import static com.lydia.dicoding.moviecatalogue4.db.DatabaseContract.MovieColumns.RELEASE_DATE;
 import static com.lydia.dicoding.moviecatalogue4.db.DatabaseContract.MovieColumns.TITLE;
+import static com.lydia.dicoding.moviecatalogue4.db.DatabaseContract.TvshowColumns.TABLE_NAME_TV;
 
 public class MovieHelper {
 
     private static String DATABASE_TABLE = TABLE_NAME;
+    private static String DATABASE_TABLE_TV = TABLE_NAME_TV;
     private Context context;
     private DatabaseHelper databaseHelper;
 
@@ -73,7 +75,7 @@ public class MovieHelper {
 
     public ArrayList<TvShow> queryTv() {
         ArrayList<TvShow> arrayList = new ArrayList();
-        Cursor cursor = database.query(DATABASE_TABLE,
+        Cursor cursor = database.query(DATABASE_TABLE_TV,
                 null,
                 null,
                 null,
@@ -110,7 +112,7 @@ public class MovieHelper {
         return database.insert(DATABASE_TABLE, null, initialValues);
     }
 
-    public long insert(TvShow tvShow) {
+    public long insertTv(TvShow tvShow) {
         ContentValues initialValues = new ContentValues();
         initialValues.put(_ID, tvShow.getId());
         initialValues.put(TITLE, tvShow.getTitle());
@@ -128,7 +130,7 @@ public class MovieHelper {
         return database.update(DATABASE_TABLE, args, _ID + "= '" + movie.getId() + "'", null);
     }
 
-    public int update(TvShow tvShow) {
+    public int updateTv(TvShow tvShow) {
         ContentValues args = new ContentValues();
         args.put(TITLE, tvShow.getTitle());
         args.put(OVERVIEW, tvShow.getOverview());
@@ -159,16 +161,45 @@ public class MovieHelper {
                 , null
                 , _ID + " DESC");
     }
+    public Cursor queryByIdProviderTv(String id) {
+        return database.query(DATABASE_TABLE_TV, null
+                , _ID + " = ?"
+                , new String[]{id}
+                , null
+                , null
+                , null
+                , null);
+    }
+
+    public Cursor queryProviderTv() {
+        return database.query(DATABASE_TABLE_TV
+                , null
+                , null
+                , null
+                , null
+                , null
+                , _ID + " DESC");
+    }
 
     public long insertProvider(ContentValues values) {
         return database.insert(DATABASE_TABLE, null, values);
+    }
+
+    public long insertProviderTv(ContentValues values) {
+        return database.insert(DATABASE_TABLE_TV, null, values);
     }
 
     public int updateProvider(String id, ContentValues values) {
         return database.update(DATABASE_TABLE, values, _ID + " = ?", new String[]{id});
     }
 
+    public int updateProviderTv(String id, ContentValues values) {
+        return database.update(DATABASE_TABLE_TV, values, _ID + " = ?", new String[]{id});
+    }
     public int deleteProvider(String id) {
         return database.delete(DATABASE_TABLE, _ID + " = ?", new String[]{id});
+    }
+    public int deleteProviderTv(String id) {
+        return database.delete(DATABASE_TABLE_TV, _ID + " = ?", new String[]{id});
     }
 }

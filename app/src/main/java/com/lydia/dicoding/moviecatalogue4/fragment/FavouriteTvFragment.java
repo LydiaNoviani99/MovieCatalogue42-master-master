@@ -61,7 +61,6 @@ public class FavouriteTvFragment extends Fragment implements TvShowAdapter.TvSho
         tvShowAdapter = new TvShowAdapter();
         tvShowAdapter.setTvShowDataListener(this);
         rvTv.setAdapter(tvShowAdapter);
-        Toast.makeText(getContext(), "aaa", Toast.LENGTH_SHORT).show();
         new LoadNoteAsync().execute();
     }
 
