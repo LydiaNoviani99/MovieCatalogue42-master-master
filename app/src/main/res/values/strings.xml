@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Catalogue Movie Application</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="change_language_settings">Change Language Settings</string>
+    <string name="search">Search</string>
+    <string name="now_playing">Now Playing</string>
+    <string name="tv_show">Tv Show</string>
+    <string name="up_coming">Up Coming</string>
+    <string name="search_movie">Search Movie</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="movie_name">Movie TItle</string>
+    <string name="favorite">Favorite</string>
+    <string name="popularity">Popularity: %s</string>
+    <string name="favorite_movie">Favorite Movie</string>
+    <string name="favorite_tv">Favorite Tv Show</string>
+</resources>
