@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.lydia.dicoding.moviecatalogue4.db.DatabaseContract;
 import com.lydia.dicoding.moviecatalogue4.entity.Movie;
 import com.lydia.dicoding.moviecatalogue4.entity.TvShow;
 import com.squareup.picasso.Picasso;
@@ -20,7 +21,6 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 import static android.provider.BaseColumns._ID;
-import static com.lydia.dicoding.moviecatalogue4.db.DatabaseContract.MovieColumns.CONTENT_URI;
 import static com.lydia.dicoding.moviecatalogue4.db.DatabaseContract.MovieColumns.OVERVIEW;
 import static com.lydia.dicoding.moviecatalogue4.db.DatabaseContract.MovieColumns.POPULARITY;
 import static com.lydia.dicoding.moviecatalogue4.db.DatabaseContract.MovieColumns.POSTER_PATH;
@@ -80,7 +80,7 @@ public class DetailActivity extends AppCompatActivity {
     public void saveToFavorite() {
 
         if(movie!=null){
-            Cursor cursor = getContentResolver().query(Uri.parse(CONTENT_URI + "/" + movie.getId()), null, null, null, null);
+            Cursor cursor = getContentResolver().query(Uri.parse(DatabaseContract.MovieColumns.CONTENT_URI + "/" + movie.getId()), null, null, null, null);
             if (cursor.getCount() == 0) {
                 ContentValues contentValues = new ContentValues();
                 contentValues.put(_ID, movie.getId());
@@ -89,33 +89,33 @@ public class DetailActivity extends AppCompatActivity {
                 contentValues.put(POSTER_PATH, movie.getPosterPath());
                 contentValues.put(RELEASE_DATE, movie.getReleaseDate());
                 contentValues.put(POPULARITY, movie.getPopularity());
-                getContentResolver().insert(CONTENT_URI, contentValues);
-                Toast.makeText(DetailActivity.this, movie.getTitle() + " save to favorite", Toast.LENGTH_LONG).show();
+                getContentResolver().insert(DatabaseContract.MovieColumns.CONTENT_URI, contentValues);
+                Toast.makeText(DetailActivity.this, movie.getTitle() + " save to favorite movies", Toast.LENGTH_LONG).show();
             } else {
-                long deleted = getContentResolver().delete(Uri.parse(CONTENT_URI + "/" + movie.getId()), null, null);
+                long deleted = getContentResolver().delete(Uri.parse(DatabaseContract.MovieColumns.CONTENT_URI + "/" + movie.getId()), null, null);
                 if (deleted > 0) {
-                    getContentResolver().notifyChange(CONTENT_URI, null);
+                    getContentResolver().notifyChange(DatabaseContract.MovieColumns.CONTENT_URI, null);
                 }
-                Toast.makeText(DetailActivity.this, movie.getTitle() + " remove from favorite", Toast.LENGTH_LONG).show();
+                Toast.makeText(DetailActivity.this, movie.getTitle() + " remove from favorite movies", Toast.LENGTH_LONG).show();
             }
         }
 
         if(tvshow != null){
-            Cursor cursor1 = getContentResolver().query(Uri.parse(CONTENT_URI + "/" + tvshow.getId()), null, null, null, null);
+            Cursor cursor1 = getContentResolver().query(Uri.parse(DatabaseContract.TvshowColumns.CONTENT_URI + "/" + tvshow.getId()), null, null, null, null);
             if (cursor1.getCount() == 0) {
                 ContentValues contentValues = new ContentValues();
                 contentValues.put(_ID, tvshow.getId());
                 contentValues.put(TITLE, tvshow.getTitle());
                 contentValues.put(OVERVIEW, tvshow.getOverview());
                 contentValues.put(POSTER_PATH, tvshow.getPosterPath());
-                getContentResolver().insert(CONTENT_URI, contentValues);
-                Toast.makeText(DetailActivity.this, tvshow.getTitle() + " save to favorite", Toast.LENGTH_LONG).show();
+                getContentResolver().insert(DatabaseContract.TvshowColumns.CONTENT_URI, contentValues);
+                Toast.makeText(DetailActivity.this, tvshow.getTitle() + " save to favorite tv shows", Toast.LENGTH_LONG).show();
             } else {
-                long deleted = getContentResolver().delete(Uri.parse(CONTENT_URI + "/" + tvshow.getId()), null, null);
+                long deleted = getContentResolver().delete(Uri.parse(DatabaseContract.TvshowColumns.CONTENT_URI + "/" + tvshow.getId()), null, null);
                 if (deleted > 0) {
-                    getContentResolver().notifyChange(CONTENT_URI, null);
+                    getContentResolver().notifyChange(DatabaseContract.TvshowColumns.CONTENT_URI, null);
                 }
-                Toast.makeText(DetailActivity.this, tvshow.getTitle() + " remove from favorite", Toast.LENGTH_LONG).show();
+                Toast.makeText(DetailActivity.this, tvshow.getTitle() + " remove from favorite tv shows", Toast.LENGTH_LONG).show();
             }
         }
 
